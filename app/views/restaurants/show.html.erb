@@ -1,0 +1,48 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+
+  <div class="col-md-offset-2 col-md-8">
+  <h1><%= @restaurant.name %></h1>
+    <h4>
+      <% rating = @restaurant.reviews.average(:rating).to_i%>
+      <% rating.times do %>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <% end %>
+    </h4>
+
+    <p>
+      <strong>Address:</strong>
+      <%= @restaurant.address %>
+    </p>
+
+    <p>
+      <strong>Phone number:</strong>
+      <%= @restaurant.phone_number %>
+    </p>
+
+    <p>
+      <strong>Category:</strong>
+      <%= @restaurant.category %>
+    </p>
+    <br>
+    <h3> User reviews:  </h3>
+    <p> <strong> Average rating = <%= @restaurant.reviews.average(:rating).round(1) %> </strong>
+    </p>
+
+    <ul>
+      <% @restaurant.reviews.each do |review| %>
+      <li><%= review.content %> - <%= review.rating %></li>
+      <% end %>
+    </ul>
+  </p>
+  <br>
+  <h4>Tell us your thoughts...</h4>
+  <%= render 'reviews/form', restaurant: @restaurant %>
+</div>
+
+<br>
+<br>
+<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+<%= link_to 'Back', restaurants_path %>
+</div>
+</div>
