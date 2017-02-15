@@ -4,7 +4,7 @@
   <div class="col-md-offset-2 col-md-8">
   <h1><%= @restaurant.name %></h1>
     <h4>
-      <% rating = @restaurant.reviews.average(:rating).to_i%>
+      <% rating = @restaurant.reviews.average(:rating).round(0).to_i%>
       <% rating.times do %>
       <i class="fa fa-star" aria-hidden="true"></i>
       <% end %>

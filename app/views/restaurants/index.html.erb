@@ -20,8 +20,8 @@
         <td><%= restaurant.address %></td>
         <td><%= restaurant.phone_number %></td>
         <td><%= restaurant.category %></td>
-        <td><% rating = restaurant.reviews.average(:rating).to_i%>
-            <% rating.round(0).times do %>
+        <td><% rating = restaurant.reviews.average(:rating)%>
+            <% rating.round(0).to_i.times do %>
           <i class="fa fa-star" aria-hidden="true"></i>
           <% end %>
         </td>
